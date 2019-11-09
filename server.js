@@ -7,6 +7,7 @@ const tokenChecker = require('./middleware/token-checker');
 var tokenModel = require('./model/appid-token');
 var alarmModel = require('./model/alarm');
 var bcgModel = require('./model/bcg');
+var breathModel = require('./model/breath');
 
 const app = express();
 
@@ -100,6 +101,43 @@ app.post('/getBCGArray', tokenChecker, (req, res)=>{
     };
 
     let result = bcgModel.find((data)=>{
+        return data.deviceName === devicename;
+    });
+
+    if(!result){
+        ret = {...ret, ResponseCode:401};
+        return res.success({data:ret});
+    }
+
+    ret = {...ret, Data:result.data, DataTime:result.dataTime};
+    res.success({data:ret});
+
+})
+
+/**
+ * ResponseCode
+ * 200  成功
+ * 301  設備不存在
+ * 302  webservice內部異常
+ * 303  MD5加密錯誤
+ * 401  沒有數據
+ */
+app.post('/getBreathArray', tokenChecker, (req, res)=>{
+    const devicename = req.body.devicename;
+    const date = new Date();
+
+    if(!devicename){
+        return res.fail({error: {message:'devicename is required'}});
+    }
+
+    let ret = {
+        ResponseCode:200,
+        Data:'',
+        DataTime:'',
+        CreateTime: `${ date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} }`
+    };
+
+    let result = breathModel.find((data)=>{
         return data.deviceName === devicename;
     });
 

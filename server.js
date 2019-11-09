@@ -6,6 +6,7 @@ const tokenChecker = require('./middleware/token-checker');
 
 var tokenModel = require('./model/appid-token');
 var alarmModel = require('./model/alarm');
+var bcgModel = require('./model/bcg');
 
 const app = express();
 
@@ -31,7 +32,7 @@ const port = process.env.port||3001;
  * Type 含义
  * 200 生命体征异常
  * 201 网关不发数据
- * 202 床板离线
+ * 202 床板离线`
  * 203 床板接触不良
  * 204 夜间离床过久
  * 205 称重传感器异常
@@ -39,6 +40,7 @@ const port = process.env.port||3001;
  * 207 心率传感器异常
  * 209 晚睡
  */
+//TODO:Time filter
 app.post('/getAlarm', tokenChecker, (req, res)=>{
     const devicename = req.body.devicename;
     const startTime = req.body.startTime;//not consider at moment
@@ -71,6 +73,43 @@ app.post('/getAlarm', tokenChecker, (req, res)=>{
 
     ret = {...ret, RecordNum:result.length, Records:result};
     res.success({data: ret});
+
+})
+
+/**
+ * ResponseCode
+ * 200  成功
+ * 301  設備不存在
+ * 302  webservice內部異常
+ * 303  MD5加密錯誤
+ * 401  沒有數據
+ */
+app.post('/getBCGArray', tokenChecker, (req, res)=>{
+    const devicename = req.body.devicename;
+    const date = new Date();
+
+    if(!devicename){
+        return res.fail({error: {message:'devicename is required'}});
+    }
+
+    let ret = {
+        ResponseCode:200,
+        Data:'',
+        DataTime:'',
+        CreateTime: `${ date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} }`
+    };
+
+    let result = bcgModel.find((data)=>{
+        return data.deviceName === devicename;
+    });
+
+    if(!result){
+        ret = {...ret, ResponseCode:401};
+        return res.success({data:ret});
+    }
+
+    ret = {...ret, Data:result.data, DataTime:result.dataTime};
+    res.success({data:ret});
 
 })
 

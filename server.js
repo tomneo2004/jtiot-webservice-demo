@@ -10,6 +10,7 @@ var bcgModel = require('./model/bcg');
 var breathModel = require('./model/breath');
 var productModel = require('./model/product');
 var sleepRecordModel = require('./model/sleepRecord');
+var bedRecordModel = require('./model/bedRecord');
 
 let isDateTimeBetween = require('./Utils/dateTime');
 
@@ -209,6 +210,71 @@ app.post('/getProductList', tokenChecker, (req, res)=>{
     });
 
     res.success({data: {...ret, RecordNum:filterResult.length, Records:filterResult}});
+})
+
+/**
+ * 
+ * ResponseCode 含义
+ * 200 成功
+301 设备不存在
+302 Webservice内部异常
+303 MD5加密错误
+401 没有数据
+ *
+ *
+ * Type 含义
+ * offline 由网关离线导致下床
+ * “”(空) 正常上下床
+ */
+app.post('/getbedRecord', tokenChecker, (req, res)=>{
+    const devicename = req.body.devicename;
+    const startTime = req.body.startTime;
+    const endTime = req.body.endTime;
+
+    const date = new Date();
+
+    let ret = {
+        ResponseCode:200,
+        RecordNum:0,
+        Records:[],
+        CreateTime: `${ date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} }`
+    };
+
+    if(devicename.length < 1){
+        return res.fail({error: {message:'deviceName is required'}});
+    }
+   
+    let result = bedRecordModel.filter((data)=>{
+
+        if(devicename === data.DeviceName){
+            
+            let start = isDateTimeBetween(data.StartTime, startTime, endTime);
+            let end = isDateTimeBetween(data.EndTime, startTime, endTime);
+
+            return start && end;
+        }
+        
+        return false;
+    })
+
+    if(result.length < 1){
+        ret = {...ret, ResponseCode:401};
+        return res.success({data: ret});
+    }
+
+    //transform records
+    result = result.map((data)=>{
+
+        return {
+            'StartTime':data.StartTime,
+            'EndTime':data.EndTime,
+            'Type':data.Type
+        }
+    })
+
+    ret = {...ret, RecordNum:result.length, Records:result};
+    res.success({data: ret});
+
 })
 
 /**

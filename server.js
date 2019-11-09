@@ -10,6 +10,8 @@ var bcgModel = require('./model/bcg');
 var breathModel = require('./model/breath');
 var productModel = require('./model/product');
 
+let isDateTimeBetween = require('./Utils/dateTime');
+
 const app = express();
 
 const jSend = new JSend({ name: 'api-demo', version: '1.0.0', release: '01' });
@@ -63,9 +65,18 @@ app.post('/getAlarm', tokenChecker, (req, res)=>{
         ret = {...ret, RecordNum:alarmModel.length, Records:alarmModel};
         return res.success({data: ret});
     }
-
+   
     let result = alarmModel.filter((data)=>{
-        return deviceNameList.includes(data.DeviceName)? true:false;
+
+        if(deviceNameList.includes(data.DeviceName)){
+            if(!startTime || !endTime){
+                return true;
+            }
+            
+            return isDateTimeBetween(data.AlarmTime, startTime, endTime);
+        }
+        
+        return false;
     })
 
     if(result.length < 1){
@@ -181,60 +192,23 @@ app.post('/getProductList', tokenChecker, (req, res)=>{
         CreateTime: `${ date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} }`
     };
 
-    let retDataModel = {
-        ID:'',
-        DeviceName:'',
-        Address:'',
-        DeviceStatus:'',
-        HeartStatus:''
-    }
 
     if(filter === 'all'){
-        let result = productModel.map((data)=>{
-            return {...retDataModel, 
-                ID:data.id,
-                DeviceName:data.deviceName,
-                Address:data.address,
-                DeviceStatus:data.deviceStatus,
-                HeartStatus:data.heartStatus
-            }
-        });
-
-        return res.success({data: {...ret, RecordNum:result.length, Records:result}});
+        return res.success({data: {...ret, RecordNum:productModel.length, Records:productModel}});
     }
     else if(filter === 'normal'){
         let filterResult = productModel.filter((data)=>{
-            return data.deviceStatus === '0';
+            return data.DeviceStatus === '0';
         });
 
-        let result = filterResult.map((data)=>{
-            return {...retDataModel, 
-                ID:data.id,
-                DeviceName:data.deviceName,
-                Address:data.address,
-                DeviceStatus:data.deviceStatus,
-                HeartStatus:data.heartStatus
-            }
-        });
-
-        return res.success({data: {...ret, RecordNum:result.length, Records:result}});
+        return res.success({data: {...ret, RecordNum:filterResult.length, Records:filterResult}});
     }
 
     let filterResult = productModel.filter((data)=>{
-        return data.deviceStatus !== '0';
+        return data.DeviceStatus !== '0';
     });
 
-    let result = filterResult.map((data)=>{
-        return {...retDataModel, 
-            ID:data.id,
-            DeviceName:data.deviceName,
-            Address:data.address,
-            DeviceStatus:data.deviceStatus,
-            HeartStatus:data.heartStatus
-        }
-    });
-
-    res.success({data: {...ret, RecordNum:result.length, Records:result}});
+    res.success({data: {...ret, RecordNum:filterResult.length, Records:filterResult}});
 })
 
 app.get('/helloworld', (req, res)=>{

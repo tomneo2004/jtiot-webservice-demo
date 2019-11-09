@@ -8,6 +8,7 @@ var tokenModel = require('./model/appid-token');
 var alarmModel = require('./model/alarm');
 var bcgModel = require('./model/bcg');
 var breathModel = require('./model/breath');
+var productModel = require('./model/product');
 
 const app = express();
 
@@ -149,6 +150,91 @@ app.post('/getBreathArray', tokenChecker, (req, res)=>{
     ret = {...ret, Data:result.data, DataTime:result.dataTime};
     res.success({data:ret});
 
+})
+
+/**
+ * ResponseCode
+ * 200  成功
+ * 301  設備不存在
+ * 302  webservice內部異常
+ * 303  MD5加密錯誤
+ * 401  沒有數據
+ * 402  错误的filter条件
+ */
+app.post('/getProductList', tokenChecker, (req, res)=>{
+    const filter = req.body.filter;
+    const date = new Date();
+    const filterList = ['all', 'normal', 'exception'];
+
+    if(!filter){
+        return res.fail({error: {message:'filter is required'}});
+    }
+
+    if(!filterList.includes(filter)){
+        return res.success({data: {ResponseCode:402}});
+    }
+
+    let ret = {
+        ResponseCode:200,
+        RecordNum:0,
+        Records:[],
+        CreateTime: `${ date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} }`
+    };
+
+    let retDataModel = {
+        ID:'',
+        DeviceName:'',
+        Address:'',
+        DeviceStatus:'',
+        HeartStatus:''
+    }
+
+    if(filter === 'all'){
+        let result = productModel.map((data)=>{
+            return {...retDataModel, 
+                ID:data.id,
+                DeviceName:data.deviceName,
+                Address:data.address,
+                DeviceStatus:data.deviceStatus,
+                HeartStatus:data.heartStatus
+            }
+        });
+
+        return res.success({data: {...ret, RecordNum:result.length, Records:result}});
+    }
+    else if(filter === 'normal'){
+        let filterResult = productModel.filter((data)=>{
+            return data.deviceStatus === '0';
+        });
+
+        let result = filterResult.map((data)=>{
+            return {...retDataModel, 
+                ID:data.id,
+                DeviceName:data.deviceName,
+                Address:data.address,
+                DeviceStatus:data.deviceStatus,
+                HeartStatus:data.heartStatus
+            }
+        });
+
+        return res.success({data: {...ret, RecordNum:result.length, Records:result}});
+    }
+
+    let filterResult = productModel.filter((data)=>{
+        return data.deviceStatus !== '0';
+    });
+
+    let result = filterResult.map((data)=>{
+        return {...retDataModel, 
+            ID:data.id,
+            DeviceName:data.deviceName,
+            Address:data.address,
+            DeviceStatus:data.deviceStatus,
+            HeartStatus:data.heartStatus
+        }
+    });
+
+    res.success({data: {...ret, RecordNum:result.length, Records:result}});
 })
 
 app.get('/helloworld', (req, res)=>{

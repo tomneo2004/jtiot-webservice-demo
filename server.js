@@ -47,8 +47,8 @@ const port = process.env.port||3001;
 //TODO:Time filter
 app.post('/getAlarm', tokenChecker, (req, res)=>{
     const devicename = req.body.devicename;
-    const startTime = req.body.startTime;//not consider at moment
-    const endTime = req.body.endTime;//not consider at moment
+    const startTime = req.body.startTime;
+    const endTime = req.body.endTime;
 
     const date = new Date();
 

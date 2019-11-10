@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import { withTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import {requestToken} from '../../store/appid/appid.actions';
+import JsonViewer from 'react-json-view'
 
 const RequestToken = ({t})=>{
 
     const id = useSelector(state=>state.appId.appId);
     const token = useSelector(state=>state.appId.token);
+    const rawData = useSelector(state=>state.appId.rawData);
     const [appId, setAppId] = useState(id);
     const dispatch = useDispatch();
     
@@ -37,6 +39,9 @@ const RequestToken = ({t})=>{
                 </div>
                 :
                 null
+            }
+            {
+                rawData? <JsonViewer src={rawData} />:null
             }
         </div>
     );

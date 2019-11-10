@@ -10,9 +10,9 @@ export const requestToken = (appid)=>{
             appid:appid
         });
         
-        let data = res.data.data;
-        let token = data.token;
+        let rawData = res.data.data;
+        let token = rawData.token;
 
-        dispatch({type:actionType.REQUEST_TOKEN_SUCCESS, payload:{appid, token}});
+        dispatch({type:actionType.REQUEST_TOKEN_SUCCESS, payload:{appid, token, rawData}});
     }
 }

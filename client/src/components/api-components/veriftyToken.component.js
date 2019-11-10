@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import JsonViewer from '../jsonViewer/jsonViewer';
 import axios from 'axios';
 
+import classes from './common.module.scss';
+
 const verifyToken = async (appId, token)=>{
 
     let res = await axios.post('/verifyTokenMethod', {
@@ -16,14 +18,12 @@ const verifyToken = async (appId, token)=>{
 
 const VerifyToken = ({t})=>{
 
-    const currnet_id = useSelector(state=>state.appId.appId);
-    const currnet_token = useSelector(state=>state.appId.token);
-    const [appId, setAppId] = useState(currnet_id);
-    const [token, setToken] = useState(currnet_token);
+    const [appId, setAppId] = useState('');
+    const [token, setToken] = useState('');
     const [rawData, setRawData] = useState(null);
 
     return(
-        <div>
+        <div className={classes.overlay}>
             <div>
             {t('desc', 'desc')}
             </div>
@@ -33,13 +33,13 @@ const VerifyToken = ({t})=>{
             <div>
                 <div>
                     <label>{'appId:'}</label>
-                    <input type='text' value={appId} onChange={
+                    <input type='text' defaultValue={appId} onChange={
                         (e)=>setAppId(e.target.value)
                     } />
                 </div>
                 <div>
                     <label>{'token:'}</label>
-                    <input type='text' value={token} onChange={
+                    <input type='text' defaultValue={token} onChange={
                         (e)=>setToken(e.target.value)
                     }/>
                 </div>

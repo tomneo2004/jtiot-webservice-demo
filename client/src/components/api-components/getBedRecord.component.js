@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import JsonViewer from '../jsonViewer/jsonViewer';
 import axios from 'axios';
 
+import classes from './common.module.scss';
+
 const getBedRecord = async (appId, token, deviceName, startTime, endTime)=>{
 
     let res = await axios.post('/getBedRecord', {
@@ -24,12 +26,10 @@ const GetBedRecord = ({t})=>{
     const [deviceName, setDeviceName] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
-    const [appId, setAppId] = useState(currnet_id);
-    const [token, setToken] = useState(currnet_token);
     const [rawData, setRawData] = useState(null);
 
     return(
-        <div>
+        <div className={classes.overlay}>
             <div>
             {t('desc', 'desc')}
             </div>
@@ -57,19 +57,15 @@ const GetBedRecord = ({t})=>{
                 </div>
                 <div>
                     <label>{'appId:'}</label>
-                    <input type='text' value={appId} onChange={
-                        (e)=>setAppId(e.target.value)
-                    } />
+                    <input type='text' value={currnet_id} readOnly />
                 </div>
                 <div>
                     <label>{'token:'}</label>
-                    <input type='text' value={token} onChange={
-                        (e)=>setToken(e.target.value)
-                    }/>
+                    <input type='text' value={currnet_token} readOnly />
                 </div>
                 <button onClick={
                     ()=>{
-                        getBedRecord(appId, token, deviceName, startTime, endTime)
+                        getBedRecord(currnet_id, currnet_token, deviceName, startTime, endTime)
                         .then((data)=>setRawData(data))
                         .catch((err)=>console.log(err))
                     }

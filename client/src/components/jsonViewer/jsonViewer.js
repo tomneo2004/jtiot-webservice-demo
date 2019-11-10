@@ -5,7 +5,7 @@ import { withTranslation } from 'react-i18next';
 import classes from './jsonViewer.module.scss'
 
 const JsonViewer = ({t, title, src})=>{
-    console.log(t);
+    
     return (
         <div className={classes.jsonView}>
         {

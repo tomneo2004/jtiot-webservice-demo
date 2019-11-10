@@ -4,17 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import {requestToken} from '../../store/appid/appid.actions';
 import JsonViewer from '../jsonViewer/jsonViewer';
 
+import classes from './common.module.scss';
+
 const RequestToken = ({t})=>{
 
     const id = useSelector(state=>state.appId.appId);
-    const token = useSelector(state=>state.appId.token);
     const rawData = useSelector(state=>state.appId.rawData);
     const [appId, setAppId] = useState(id);
     const dispatch = useDispatch();
     
 
     return(
-        <div>
+        <div className={classes.overlay}>
             <div>
             {t('desc', 'desc')}
             </div>

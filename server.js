@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(jSend.middleware.bind(jSend))
 
-const port = process.env.port||3001;
+const port = process.env.port||5100;
 
 /**
  * 
@@ -397,5 +397,5 @@ app.post('/verifyTokenMethod', (req, res)=>{
 })
 
 app.listen(port, ()=>{
-    console.log('Server started!!!');
+    console.log(`Server started at port:${port}`);
 });

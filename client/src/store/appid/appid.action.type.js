@@ -1,0 +1,7 @@
+const AppIdActionType = {
+    REQUEST_TOKEN: 'REQUEST_TOKEN',
+    REQUEST_TOKEN_SUCCESS: 'REQUEST_TOKEN_SUCCESS',
+    REQUEST_TOKEN_FAIL: 'REQUEST_TOKEN_FAIL'
+}
+
+export default AppIdActionType;

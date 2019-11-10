@@ -1,24 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import {useSelector } from 'react-redux';
+
+import APIItem from './components/api-item/apiItem.component';
+
+import RequestToken from './components/api-components/requestToken.component';
+
 import './App.css';
 
 function App() {
+  const appId = useSelector(state=>state.appId.appId);
+  const token = useSelector(state=>state.appId.token);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {
+        (token && appId)?
+        <div>
+          <span>
+          {`AppId: ${appId}`}
+          </span>
+          <br />
+          <span>
+          {`Token: ${token}`}
+          </span>
+        </div>
+        :
+        null
+      }
+      <APIItem title='RequestTokenMethod'>
+        <RequestToken />
+      </APIItem>
     </div>
   );
 }

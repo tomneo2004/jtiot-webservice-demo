@@ -1,6 +1,6 @@
 {
     "translation":{
-
+        "Your appId and token":"你目前的 AppID 和 Token:",
         "desc": "說明",
         "example-input": "範例",
         "submit": "發送"

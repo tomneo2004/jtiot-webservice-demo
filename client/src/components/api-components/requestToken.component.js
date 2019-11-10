@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { withTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import {requestToken} from '../../store/appid/appid.actions';
-import JsonViewer from 'react-json-view'
+import JsonViewer from '../jsonViewer/jsonViewer';
 
 const RequestToken = ({t})=>{
 
@@ -32,14 +32,6 @@ const RequestToken = ({t})=>{
                     ()=>dispatch(requestToken(appId))
                 }>{t('submit', 'submit')}</button>
             </div>
-            {
-                token?
-                <div>
-                    {`token: ${token}`}
-                </div>
-                :
-                null
-            }
             {
                 rawData? <JsonViewer src={rawData} />:null
             }

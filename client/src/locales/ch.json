@@ -1,6 +1,8 @@
 {
     "translation":{
         "Your appId and token":"你目前的 AppID 和 Token:",
+        "webservice api":"Web service 後端服務 API",
+        "json-response-data":"json回傳資料：",
         "desc": "說明",
         "example-input": "範例",
         "submit": "發送"

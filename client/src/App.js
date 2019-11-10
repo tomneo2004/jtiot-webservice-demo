@@ -14,7 +14,7 @@ import GetBreathArray from './components/api-components/getBreathArray.component
 import GetProductList from './components/api-components/getProductList.component';
 import GetSleepRecord from './components/api-components/getSleepRecord.component';
 
-import './App.css';
+import classes from './App.module.scss';
 
 function App({t}) {
   const appId = useSelector(state=>state.appId.appId);
@@ -24,47 +24,52 @@ function App({t}) {
     <div>
       {
         (token && appId)?
-        <div>
-          <span>{t('Your appId and token', 'Your appId and token:')}</span>
-          <br />
-          <span>
+        <div className={classes.tokenSection}>
+          <span className={classes.title}>{t('Your appId and token', 'Your appId and token:')}</span>
+
+          <span className={classes.appidLabel}>
           {`AppId: ${appId}`}
           </span>
-          <br />
-          <span>
+
+          <span className={classes.tokenLabel}>
           {`Token: ${token}`}
           </span>
+          <hr />
         </div>
         :
         null
       }
-      <APIItem title='HelloWorld'>
-        <GetHelloWorld />
-      </APIItem>
-      <APIItem title='RequestTokenMethod'>
-        <RequestToken />
-      </APIItem>
-      <APIItem title='VerifyTokenMethod'>
-        <VerifyToken />
-      </APIItem>
-      <APIItem title='GetAlarm'>
-        <GetAlarm />
-      </APIItem>
-      <APIItem title='GetBCGArray'>
-        <GetBCGArray />
-      </APIItem>
-      <APIItem title='GetBedRecord'>
-        <GetBedRecord />
-      </APIItem>
-      <APIItem title='GetBreathArray'>
-        <GetBreathArray />
-      </APIItem>
-      <APIItem title='GetProductList'>
-        <GetProductList />
-      </APIItem>
-      <APIItem title='GetSleepRecord'>
-        <GetSleepRecord />
-      </APIItem>
+      
+      <div className={classes.apiSection}>
+        <div className={classes.title}>{t('webservice api', 'WebService API')}</div>
+        <APIItem title='HelloWorld'>
+          <GetHelloWorld />
+        </APIItem>
+        <APIItem title='RequestTokenMethod'>
+          <RequestToken />
+        </APIItem>
+        <APIItem title='VerifyTokenMethod'>
+          <VerifyToken />
+        </APIItem>
+        <APIItem title='GetAlarm'>
+          <GetAlarm />
+        </APIItem>
+        <APIItem title='GetBCGArray'>
+          <GetBCGArray />
+        </APIItem>
+        <APIItem title='GetBedRecord'>
+          <GetBedRecord />
+        </APIItem>
+        <APIItem title='GetBreathArray'>
+          <GetBreathArray />
+        </APIItem>
+        <APIItem title='GetProductList'>
+          <GetProductList />
+        </APIItem>
+        <APIItem title='GetSleepRecord'>
+          <GetSleepRecord />
+        </APIItem>
+      </div>
     </div>
   );
 }

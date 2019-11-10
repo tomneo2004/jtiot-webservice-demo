@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactJsonViewer from 'react-json-view'
+import { withTranslation } from 'react-i18next';
 
-const JsonViewer = ({title, src})=>{
+import classes from './jsonViewer.module.scss'
 
+const JsonViewer = ({t, title, src})=>{
+    console.log(t);
     return (
-        <div>
+        <div className={classes.jsonView}>
         {
             src?
             <div>
-                <div>{title?title:'RawData:'}</div>
-                <ReactJsonViewer src={src} />
+                <div>{title?title:t('json-response-data')}</div>
+                <ReactJsonViewer src={src} theme="monokai" />
             </div>
             :
             null
@@ -18,4 +21,4 @@ const JsonViewer = ({title, src})=>{
     );
 }
 
-export default JsonViewer;
+export default withTranslation()(JsonViewer);

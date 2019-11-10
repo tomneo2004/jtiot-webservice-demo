@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.tokenSection{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title{
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .appidLabel{
+    font-weight: bold;
+    color: red;
+  }
+
+  .tokenLabel{
+    font-weight: bold;
+    color: red;
+  }
+}
+
+.apiSection{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+
+  .title{
+      font-weight: bold;
+      font-size: 2rem;
+
+  }
+}

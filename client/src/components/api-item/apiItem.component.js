@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 
+import classes from './apiItem.module.scss';
+
 
 const APIItem = ({title, children})=>{
 
     const [expand, setExpand] = useState(false);
 
     return(
-        <div>
-            <h3 onClick={ ()=>setExpand(!expand) }>{title}</h3>
+        <div className={classes.item}>
+            <h3 className={classes.title} onClick={ ()=>setExpand(!expand) }>{title}</h3>
             { expand?children:null }
         </div>
     );

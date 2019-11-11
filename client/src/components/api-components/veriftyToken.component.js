@@ -62,8 +62,17 @@ const VerifyToken = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <hr />
+            <div>
+                <div>{t('VerifyTokenResponseCode:title')}</div>
+                <div>{t('VerifyTokenResponseCode:501')}</div>
+                <div>{t('VerifyTokenResponseCode:502')}</div>
+                <div>{t('VerifyTokenResponseCode:503')}</div>
+                <div>{t('VerifyTokenResponseCode:504')}</div>
+            </div>
         </div>
     );
 }
 
-export default withTranslation(['common', 'VerifyToken'])(VerifyToken);
+export default withTranslation(['common', 'VerifyToken',
+'VerifyTokenResponseCode'])(VerifyToken);

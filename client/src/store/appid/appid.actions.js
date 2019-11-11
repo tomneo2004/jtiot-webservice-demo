@@ -11,8 +11,8 @@ export const requestToken = (appid)=>{
                 appid:appid
             });
             
-            let rawData = res.data.data;
-            let token = rawData.token;
+            let rawData = res.data;
+            let token = rawData.data.token;
     
             dispatch({type:actionType.REQUEST_TOKEN_SUCCESS, payload:{appid, token, rawData}});
         }

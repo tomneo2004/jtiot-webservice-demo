@@ -82,8 +82,31 @@ const GetAlarm = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <hr />
+            <div>
+                <div>{t('AlarmType:title')}</div>
+                <div>{t('AlarmType:200')}</div>
+                <div>{t('AlarmType:201')}</div>
+                <div>{t('AlarmType:202')}</div>
+                <div>{t('AlarmType:203')}</div>
+                <div>{t('AlarmType:204')}</div>
+                <div>{t('AlarmType:205')}</div>
+                <div>{t('AlarmType:206')}</div>
+                <div>{t('AlarmType:207')}</div>
+                <div>{t('AlarmType:209')}</div>
+            </div>
+            <hr />
+            <div>
+                <div>{t('ResponseCode:title')}</div>
+                <div>{t('ResponseCode:200')}</div>
+                <div>{t('ResponseCode:301')}</div>
+                <div>{t('ResponseCode:302')}</div>
+                <div>{t('ResponseCode:303')}</div>
+                <div>{t('ResponseCode:401')}</div>
+            </div>
         </div>
     );
 }
 
-export default withTranslation(['common', 'AlarmList'])(GetAlarm);
+export default withTranslation(['common', 'AlarmList',
+'AlarmType', 'ResponseCode'])(GetAlarm);

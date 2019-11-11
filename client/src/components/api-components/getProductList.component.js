@@ -66,8 +66,29 @@ const GetProductList = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <hr />
+            <div>
+                <div>{t('DeviceStatus:title')}</div>
+                <div>{t('DeviceStatus:0')}</div>
+                <div>{t('DeviceStatus:1')}</div>
+                <div>{t('DeviceStatus:A')}</div>
+                <div>{t('DeviceStatus:offline')}</div>
+                <div>{t('DeviceStatus:notUsing')}</div>
+                <div>{t('DeviceStatus:detecting')}</div>
+            </div>
+            <hr />
+            <div>
+                <div>{t('ResponseCode:title')}</div>
+                <div>{t('ResponseCode:200')}</div>
+                <div>{t('ResponseCode:301')}</div>
+                <div>{t('ResponseCode:302')}</div>
+                <div>{t('ResponseCode:303')}</div>
+                <div>{t('ResponseCode:401')}</div>
+                <div>{t('ResponseCode:403')}</div>
+            </div>
         </div>
     );
 }
 
-export default withTranslation(['common', 'ProductList'])(GetProductList);
+export default withTranslation(['common', 'ProductList',
+ 'DeviceStatus', 'ResponseCode'])(GetProductList);

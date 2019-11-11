@@ -82,8 +82,27 @@ const GetSleepRecord = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <hr />
+            <div>
+                <div>{t('SleepRecordType:title')}</div>
+                <div>{t('SleepRecordType:0')}</div>
+                <div>{t('SleepRecordType:1')}</div>
+                <div>{t('SleepRecordType:2')}</div>
+                <div>{t('SleepRecordType:3')}</div>
+            </div>
+            <hr />
+            <div>
+                <div>{t('ResponseCode:title')}</div>
+                <div>{t('ResponseCode:200')}</div>
+                <div>{t('ResponseCode:301')}</div>
+                <div>{t('ResponseCode:302')}</div>
+                <div>{t('ResponseCode:303')}</div>
+                <div>{t('ResponseCode:401')}</div>
+                <div>{t('ResponseCode:403')}</div>
+            </div>
         </div>
     );
 }
 
-export default withTranslation(['common', 'SleepRecord'])(GetSleepRecord);
+export default withTranslation(['common', 'SleepRecord', 
+'ResponseCode', 'SleepRecordType'])(GetSleepRecord);

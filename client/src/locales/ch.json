@@ -66,5 +66,61 @@
     "AlarmList":{
         "desc-content":"(POST) \n通過設備名稱查詢某個設備特定時段的警報",
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: 20:59:A0:B0:A9:93 \nstartTime: 2017-01-06 10:03:02 \nendTime: 2019-12-11 17:23:06" 
+    },
+
+    "DeviceStatus":{
+        "title":"DeviceStatus:",
+        "0":"0 - 正常",
+        "1":"1 - 床板传感器接触不良",
+        "A":"A - 床板传感器离线",
+        "offline":"offline - 床板网关离线",
+        "notUsing":"notUsing - 未启用，一直没收到数据",
+        "detecting":"detecting - 检测中"
+    },
+
+    "ResponseCode":{
+        "title":"ResponseCode:",
+        "200":"200 - 成功:",
+        "301":"301 - 设备不存在",
+        "302":"302 - Webservice内部异常",
+        "303":"303 - MD5加密错误",
+        "401":"401 - 没有数据",
+        "402":"402 - 查询数据过多",
+        "403":"402 - 错误的filter条件"
+    },
+
+    "SleepRecordType":{
+        "title":"Type:",
+        "0":"0 - 觉醒",
+        "1":"1 - 浅睡",
+        "2":"2 - 暂时测不出来",
+        "3":"3 - 深睡"
+    },
+
+    "BedRecordType":{
+        "title":"Type:",
+        "offline":"offline - 由网关离线导致下床",
+        "empty":"(空) - 正常上下床"
+    },
+
+    "AlarmType":{
+        "title":"Type:",
+        "200":"200 - 生命体征异常",
+        "201":"201 - 网关不发数据",
+        "202":"202 - 床板离线",
+        "203":"203 - 床板接触不良",
+        "204":"204 - 夜间离床过久",
+        "205":"205 - 称重传感器异常",
+        "206":"206 - 呼吸暂停异常",
+        "207":"207 - 心率传感器异常",
+        "209":"209 - 晚睡"
+    },
+
+    "VerifyTokenResponseCode":{
+        "title":"ResponseCode:",
+        "501":"501 - Token或APPID有誤，請檢查",
+        "502":"502 - Token超時",
+        "503":"503 - 驗證成功",
+        "504":"504 - 該設備不屬於該APPID"
     }
 }

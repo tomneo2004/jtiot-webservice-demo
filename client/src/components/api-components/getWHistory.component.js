@@ -82,8 +82,19 @@ const GetWHistory = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <hr />
+            <div>
+                <div>{t('ResponseCode:title')}</div>
+                <div>{t('ResponseCode:200')}</div>
+                <div>{t('ResponseCode:301')}</div>
+                <div>{t('ResponseCode:302')}</div>
+                <div>{t('ResponseCode:303')}</div>
+                <div>{t('ResponseCode:401')}</div>
+                <div>{t('ResponseCode:402')}</div>
+            </div>
         </div>
     );
 }
 
-export default withTranslation(['common', 'WHistory'])(GetWHistory);
+export default withTranslation(['common', 'WHistory', 
+'ResponseCode'])(GetWHistory);

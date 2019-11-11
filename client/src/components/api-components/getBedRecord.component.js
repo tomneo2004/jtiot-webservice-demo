@@ -82,8 +82,24 @@ const GetBedRecord = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <hr />
+            <div>
+                <div>{t('BedRecordType:title')}</div>
+                <div>{t('BedRecordType:offline')}</div>
+                <div>{t('BedRecordType:empty')}</div>
+            </div>
+            <hr />
+            <div>
+                <div>{t('ResponseCode:title')}</div>
+                <div>{t('ResponseCode:200')}</div>
+                <div>{t('ResponseCode:301')}</div>
+                <div>{t('ResponseCode:302')}</div>
+                <div>{t('ResponseCode:303')}</div>
+                <div>{t('ResponseCode:401')}</div>
+            </div>
         </div>
     );
 }
 
-export default withTranslation(['common', 'BedRecord'])(GetBedRecord);
+export default withTranslation(['common', 'BedRecord',
+'ResponseCode', 'BedRecordType'])(GetBedRecord);

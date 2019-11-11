@@ -13,6 +13,9 @@ import GetBedRecord from './components/api-components/getBedRecord.component';
 import GetBreathArray from './components/api-components/getBreathArray.component';
 import GetProductList from './components/api-components/getProductList.component';
 import GetSleepRecord from './components/api-components/getSleepRecord.component';
+import GetBRHistory from './components/api-components/getBRHistory.component';
+import GetHBHistory from './components/api-components/getHBHistory.component';
+import GetWHistory from './components/api-components/getWHistory.component';
 
 import classes from './App.module.scss';
 
@@ -68,6 +71,15 @@ function App({t}) {
         </APIItem>
         <APIItem title='GetSleepRecord'>
           <GetSleepRecord />
+        </APIItem>
+        <APIItem title='GetBRHistory'>
+          <GetBRHistory />
+        </APIItem>
+        <APIItem title='GetHBHistory'>
+          <GetHBHistory />
+        </APIItem>
+        <APIItem title='GetWHistory'>
+          <GetWHistory />
         </APIItem>
       </div>
     </div>

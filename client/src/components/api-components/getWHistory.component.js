@@ -33,9 +33,17 @@ const GetWHistory = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('WHistory:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('WHistory:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'devicename:'}</label>
@@ -78,4 +86,4 @@ const GetWHistory = ({t})=>{
     );
 }
 
-export default withTranslation()(GetWHistory);
+export default withTranslation(['common', 'WHistory'])(GetWHistory);

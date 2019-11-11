@@ -29,9 +29,17 @@ const GetBreathArray = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('BreathArray:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('BreathArray:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'devicename:'}</label>
@@ -62,4 +70,4 @@ const GetBreathArray = ({t})=>{
     );
 }
 
-export default withTranslation()(GetBreathArray);
+export default withTranslation(['common', 'BreathArray'])(GetBreathArray);

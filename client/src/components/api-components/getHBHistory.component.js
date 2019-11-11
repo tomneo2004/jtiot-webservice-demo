@@ -33,9 +33,17 @@ const GetHBHistory = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('HBHistory:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('HBHistory:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'devicename:'}</label>
@@ -78,4 +86,4 @@ const GetHBHistory = ({t})=>{
     );
 }
 
-export default withTranslation()(GetHBHistory);
+export default withTranslation(['common', 'HBHistory'])(GetHBHistory);

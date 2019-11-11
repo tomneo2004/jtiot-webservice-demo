@@ -29,9 +29,17 @@ const GetBCGArray = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('BCGArray:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('BCGArray:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'devicename:'}</label>
@@ -62,4 +70,4 @@ const GetBCGArray = ({t})=>{
     );
 }
 
-export default withTranslation()(GetBCGArray);
+export default withTranslation(['common', 'BCGArray'])(GetBCGArray);

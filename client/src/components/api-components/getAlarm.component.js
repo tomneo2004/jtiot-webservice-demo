@@ -33,9 +33,17 @@ const GetAlarm = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('AlarmList:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('AlarmList:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'devicename:'}</label>
@@ -78,4 +86,4 @@ const GetAlarm = ({t})=>{
     );
 }
 
-export default withTranslation()(GetAlarm);
+export default withTranslation(['common', 'AlarmList'])(GetAlarm);

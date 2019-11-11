@@ -29,9 +29,17 @@ const GetProductList = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('ProductList:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('ProductList:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'filter:'}</label>
@@ -62,4 +70,4 @@ const GetProductList = ({t})=>{
     );
 }
 
-export default withTranslation()(GetProductList);
+export default withTranslation(['common', 'ProductList'])(GetProductList);

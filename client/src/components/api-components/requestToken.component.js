@@ -20,8 +20,16 @@ const RequestToken = ({t})=>{
             {t('desc', 'desc')}
             </div>
             <div>
+            {t('RequestToken:desc-content', 'desc-content')}
+            </div>
+            <hr />
+            <div>
             {t('example-input', 'example')}
             </div>
+            <div>
+            {t('RequestToken:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'appId:'}</label>
@@ -40,4 +48,4 @@ const RequestToken = ({t})=>{
     );
 }
 
-export default withTranslation()(RequestToken);
+export default withTranslation(['common', 'RequestToken'])(RequestToken);

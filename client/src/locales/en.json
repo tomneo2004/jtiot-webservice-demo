@@ -1,11 +1,16 @@
 {
-    "translation":{
+    "common":{
         "Your appId and token":"Your AppID and Token:",
         "webservice api":"Web service API",
         "json-response-data":"json response data:",
-        "desc": "description",
-        "example-input": "example",
-        "submit": "submit"
+        "desc": "Description:",
+        "example-input": "Example:",
+        "submit": "Send"
+    },
+
+    "RequestToken":{
+        "desc-content":"Description content",
+        "example-content":"example content"
     }
     
 }

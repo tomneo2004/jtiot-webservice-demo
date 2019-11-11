@@ -27,9 +27,17 @@ const VerifyToken = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('VerifyToken:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('VerifyToken:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'appId:'}</label>
@@ -58,4 +66,4 @@ const VerifyToken = ({t})=>{
     );
 }
 
-export default withTranslation()(VerifyToken);
+export default withTranslation(['common', 'VerifyToken'])(VerifyToken);

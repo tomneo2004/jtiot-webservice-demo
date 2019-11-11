@@ -33,9 +33,17 @@ const GetBedRecord = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('BedRecord:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('BedRecord:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'devicename:'}</label>
@@ -78,4 +86,4 @@ const GetBedRecord = ({t})=>{
     );
 }
 
-export default withTranslation()(GetBedRecord);
+export default withTranslation(['common', 'BedRecord'])(GetBedRecord);

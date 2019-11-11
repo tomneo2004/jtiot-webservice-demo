@@ -21,9 +21,17 @@ const GetHelloWorld = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('HelloWorld:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('HelloWorld:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <button onClick={
                     ()=>{
@@ -40,4 +48,4 @@ const GetHelloWorld = ({t})=>{
     );
 }
 
-export default withTranslation()(GetHelloWorld);
+export default withTranslation(['common', 'HelloWorld'])(GetHelloWorld);

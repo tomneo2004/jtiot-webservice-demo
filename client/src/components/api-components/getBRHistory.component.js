@@ -33,9 +33,17 @@ const GetBRHistory = ({t})=>{
             <div>
             {t('desc', 'desc')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('BRHistory:desc-content', 'desc-content')}
+            </div>
+            <hr />
             <div>
             {t('example-input', 'example')}
             </div>
+            <div style={{'white-space': 'pre-line'}}>
+            {t('BRHistory:example-content', 'example-content')}
+            </div>
+            <hr />
             <div>
                 <div>
                     <label>{'devicename:'}</label>
@@ -78,4 +86,4 @@ const GetBRHistory = ({t})=>{
     );
 }
 
-export default withTranslation()(GetBRHistory);
+export default withTranslation(['common', 'BRHistory'])(GetBRHistory);

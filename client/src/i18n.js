@@ -19,8 +19,22 @@ i18n
     returnObjects: true,
 
     fallbackLng: 'en',
-    ns: ['translation'],
-    defaultNS: 'translation',
+
+    ns: ['common', 
+    'RequestToken',
+    'VerifyToken',
+    'WHistory',
+    'SleepRecord',
+    'ProductList',
+    'HelloWorld',
+    'HBHistory',
+    'BRHistory',
+    'BreathArray',
+    'BedRecord',
+    'BCGArray',
+    'AlarmList'],
+
+    defaultNS: 'common',
     keySeparator: false,
     interpolation: {
         escapeValue: false,

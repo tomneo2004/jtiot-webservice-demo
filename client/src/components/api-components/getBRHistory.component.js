@@ -82,8 +82,18 @@ const GetBRHistory = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <div>
+                <div>{t('ResponseCode:title')}</div>
+                <div>{t('ResponseCode:200')}</div>
+                <div>{t('ResponseCode:301')}</div>
+                <div>{t('ResponseCode:302')}</div>
+                <div>{t('ResponseCode:303')}</div>
+                <div>{t('ResponseCode:401')}</div>
+                <div>{t('ResponseCode:402')}</div>
+            </div>
         </div>
     );
 }
 
-export default withTranslation(['common', 'BRHistory'])(GetBRHistory);
+export default withTranslation(['common', 'BRHistory', 
+'ResponseCode'])(GetBRHistory);

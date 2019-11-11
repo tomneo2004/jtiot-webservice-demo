@@ -20,7 +20,7 @@
 
     "WHistory":{
         "desc-content":"(POST) \n通過設備名稱查詢某個設備特定時段的重量歷史訊息",
-        "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: B0:41:1D:04:34:5C \nstartTime: 2016-01-01 10:03:02 \nendTime: 2019-12-12 17:23:06" 
+        "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: B0:41:1D:04:34:5C \nstartTime: 2019-01-01 10:03:02 \nendTime: 2019-12-12 17:23:06" 
     },
 
     "SleepRecord":{
@@ -80,7 +80,7 @@
 
     "ResponseCode":{
         "title":"ResponseCode:",
-        "200":"200 - 成功:",
+        "200":"200 - 成功",
         "301":"301 - 设备不存在",
         "302":"302 - Webservice内部异常",
         "303":"303 - MD5加密错误",

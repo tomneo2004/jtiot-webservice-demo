@@ -11,6 +11,7 @@ var breathModel = require('./model/breath');
 var productModel = require('./model/product');
 var sleepRecordModel = require('./model/sleepRecord');
 var bedRecordModel = require('./model/bedRecord');
+var hbHistoryModel = require('./model/hbHistory');
 
 let isDateTimeBetween = require('./Utils/dateTime');
 
@@ -86,6 +87,58 @@ app.post('/getAlarm', tokenChecker, (req, res)=>{
     }
 
     ret = {...ret, RecordNum:result.length, Records:result};
+    res.success({data: ret});
+
+})
+
+/**
+ * 
+ * ResponseCode 含义
+ * 200 成功
+301 设备不存在
+302 Webservice内部异常
+303 MD5加密错误
+401 没有数据
+402 查询数据过多
+ */
+app.post('/getHBHistory', tokenChecker, (req, res)=>{
+    const devicename = req.body.devicename;
+    const startTime = req.body.startTime;
+    const endTime = req.body.endTime;
+
+    const date = new Date();
+
+    let ret = {
+        ResponseCode:200,
+        Data:'',
+        CreateTime: `${ date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} }`
+    };
+
+    let deviceNameList = devicename.length < 1?[]:devicename.split(",");
+   
+    let result = hbHistoryModel.filter((data)=>{
+
+        if(deviceNameList.includes(data.deviceName)){
+            if(!startTime || !endTime){
+                return true;
+            }
+            
+            return isDateTimeBetween(data.dataTime, startTime, endTime);
+        }
+        
+        return false;
+    })
+
+    result = result.map((data)=>{
+        return data.data;
+    })
+
+    if(result.length < 1){
+        ret = {...ret, ResponseCode:401};
+        return res.success({data: ret});
+    }
+
+    ret = {...ret, Data:result[0]};
     res.success({data: ret});
 
 })

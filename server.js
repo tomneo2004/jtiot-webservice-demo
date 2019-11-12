@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const { JSend } = require('jsend-express');
 const tokenGenerator = require('uuid-token-generator');
 const tokenChecker = require('./middleware/token-checker');
+const path = require('path');
 
 var tokenModel = require('./model/appid-token');
 var alarmModel = require('./model/alarm');
@@ -24,7 +25,8 @@ const tokgen = new tokenGenerator(128, tokenGenerator.BASE36);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use(jSend.middleware.bind(jSend))
+app.use(jSend.middleware.bind(jSend));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 const port = process.env.port||5100;
 
@@ -553,6 +555,10 @@ app.post('/verifyTokenMethod', (req, res)=>{
     }
     
     res.success({data: {responseCode:504}});
+})
+
+app.get('/', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 })
 
 app.listen(port, ()=>{

@@ -82,6 +82,7 @@ const GetBRHistory = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <hr />
             <div>
                 <div>{t('ResponseCode:title')}</div>
                 <div>{t('ResponseCode:200')}</div>

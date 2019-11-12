@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(jSend.middleware.bind(jSend));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-const port = process.env.port||5100;
+const port = process.env.PORT||5100;
 
 /**
  * 

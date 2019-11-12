@@ -3,6 +3,15 @@ import { initReactI18next } from "react-i18next";
 import ch from './locales/ch.json';
 import en from './locales/en.json';
 
+const langMap={
+  en:"English",
+  ch:"中文"
+}
+
+export const getLangFromCode = (code)=>{
+  return langMap[code];
+}
+
 // the translations
 // (tip move them in a JSON file and import them)
 const resources = {
@@ -18,7 +27,7 @@ i18n
     debug: true,
     returnObjects: true,
 
-    fallbackLng: 'en',
+    fallbackLng: ['ch', 'en'],
 
     ns: ['common', 
     'RequestToken',

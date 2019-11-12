@@ -4,6 +4,7 @@ import { withTranslation } from 'react-i18next';
 
 import APIItem from './components/api-item/apiItem.component';
 import JsonViewer from './components/jsonViewer/jsonViewer';
+import LangSwitch from './components/langSwitch/langSwitch';
 
 import GetHelloWorld from './components/api-components/getHelloWorld.component';
 import RequestToken from './components/api-components/requestToken.component';
@@ -51,6 +52,8 @@ function App({t}) {
         :
         null
       }
+
+      <LangSwitch />
 
       <div className={classes.introSection}>
         <div className={classes.title}>{t('APIUsage-title')}</div>

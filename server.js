@@ -5,6 +5,8 @@ const tokenGenerator = require('uuid-token-generator');
 const tokenChecker = require('./middleware/token-checker');
 const path = require('path');
 
+
+
 var tokenModel = require('./model/appid-token');
 var alarmModel = require('./model/alarm');
 var bcgModel = require('./model/bcg');
@@ -27,6 +29,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(jSend.middleware.bind(jSend));
 app.use(express.static(path.join(__dirname, 'client/build')));
+
 
 const port = process.env.PORT||5100;
 

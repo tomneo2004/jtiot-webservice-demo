@@ -18,7 +18,10 @@
         "DataTime":"DataTime - 數據時間",
         "ID":"ID - 設備ID",
         "Address":"Address - 安裝地址",
-        "Token":"Token - 回傳的Token"
+        "Token":"Token - 回傳的Token",
+        "APIUsage-title":"Web service 使用方式",
+        "APIUsage-intro":"Web service是restful API. 使用http POST的方法. 資料格式是用json",
+        "APIUsage-example":"json資料payload的範例："
     },
 
     "RequestToken":{
@@ -33,7 +36,7 @@
 
     "WHistory":{
         "desc-content":"(POST) \n通過設備名稱查詢某個設備特定時段的重量歷史訊息",
-        "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: B0:41:1D:04:34:5C \nstartTime: 2019-01-01 10:03:02 \nendTime: 2019-12-12 17:23:06" 
+        "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: B0:41:1D:04:34:5C \nstartTime: 2016-01-01 10:03:02 \nendTime: 2019-12-12 17:23:06" 
     },
 
     "WHistoryData":{
@@ -113,48 +116,48 @@
     "DeviceStatus":{
         "title":"DeviceStatus:",
         "0":"0 - 正常",
-        "1":"1 - 床板传感器接触不良",
-        "A":"A - 床板传感器离线",
-        "offline":"offline - 床板网关离线",
-        "notUsing":"notUsing - 未启用，一直没收到数据",
-        "detecting":"detecting - 检测中"
+        "1":"1 - 床板傳感器接觸不良",
+        "A":"A - 床板傳感器離線",
+        "offline":"offline - 床板網關離線",
+        "notUsing":"notUsing - 未啟用",
+        "detecting":"detecting - 檢測中"
     },
 
     "ResponseCode":{
         "title":"ResponseCode:",
         "200":"200 - 成功",
-        "301":"301 - 设备不存在",
-        "302":"302 - Webservice内部异常",
-        "303":"303 - MD5加密错误",
-        "401":"401 - 没有数据",
-        "402":"402 - 查询数据过多",
-        "403":"402 - 错误的filter条件"
+        "301":"301 - 設備不存在",
+        "302":"302 - Webservice內部異常",
+        "303":"303 - MD5加密錯誤",
+        "401":"401 - 没有數據",
+        "402":"402 - 查詢數據過多",
+        "403":"402 - 錯誤的filter條件"
     },
 
     "SleepRecordType":{
         "title":"Type:",
-        "0":"0 - 觉醒",
+        "0":"0 - 睡醒",
         "1":"1 - 浅睡",
-        "2":"2 - 暂时测不出来",
+        "2":"2 - 暫時測不出来",
         "3":"3 - 深睡"
     },
 
     "BedRecordType":{
         "title":"Type:",
-        "offline":"offline - 由网关离线导致下床",
+        "offline":"offline - 由網關離線導致下床",
         "empty":"(空) - 正常上下床"
     },
 
     "AlarmType":{
         "title":"Type:",
-        "200":"200 - 生命体征异常",
-        "201":"201 - 网关不发数据",
-        "202":"202 - 床板离线",
-        "203":"203 - 床板接触不良",
-        "204":"204 - 夜间离床过久",
-        "205":"205 - 称重传感器异常",
-        "206":"206 - 呼吸暂停异常",
-        "207":"207 - 心率传感器异常",
+        "200":"200 - 生命體徵異常",
+        "201":"201 - 網關不發數據",
+        "202":"202 - 床板離線",
+        "203":"203 - 床板接觸不良",
+        "204":"204 - 夜間離床過久",
+        "205":"205 - 體重傳感器異常",
+        "206":"206 - 呼吸暫停異常",
+        "207":"207 - 心率傳感器異常",
         "209":"209 - 晚睡"
     },
 

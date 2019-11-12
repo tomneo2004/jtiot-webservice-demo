@@ -3,6 +3,7 @@ import {useSelector } from 'react-redux';
 import { withTranslation } from 'react-i18next';
 
 import APIItem from './components/api-item/apiItem.component';
+import JsonViewer from './components/jsonViewer/jsonViewer';
 
 import GetHelloWorld from './components/api-components/getHelloWorld.component';
 import RequestToken from './components/api-components/requestToken.component';
@@ -18,6 +19,14 @@ import GetHBHistory from './components/api-components/getHBHistory.component';
 import GetWHistory from './components/api-components/getWHistory.component';
 
 import classes from './App.module.scss';
+
+const jsonPlayloadExample = {
+  appid:'syVEQA',
+  token:'ab93b852091b7c7afe1908a570ea2d9c',
+  devicename:'20:59:A0:B0:A9:93',
+  startTime:'2016-01-01 10:03:02',
+  endTime:'2019-12-12 17:23:06'
+};
 
 function App({t}) {
   const appId = useSelector(state=>state.appId.appId);
@@ -42,7 +51,13 @@ function App({t}) {
         :
         null
       }
-      
+
+      <div className={classes.introSection}>
+        <div className={classes.title}>{t('APIUsage-title')}</div>
+        <div className={classes.intro}>{t('APIUsage-intro')}</div>
+        <div><JsonViewer title={t('APIUsage-example')} src={jsonPlayloadExample} /></div>
+      </div>
+
       <div className={classes.apiSection}>
         <div className={classes.title}>{t('webservice api', 'WebService API')}</div>
         <APIItem title='HelloWorld'>

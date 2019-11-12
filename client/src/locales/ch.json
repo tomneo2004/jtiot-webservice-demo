@@ -5,7 +5,20 @@
         "json-response-data":"json回傳資料：",
         "desc": "說明:",
         "example-input": "範例:",
-        "submit": "發送"
+        "submit": "發送",
+        "DataReturn-desc":"回傳資料說明:",
+        "ResponseCode":"ResponseCode - 參考ResponseCode",
+        "DeviceName":"DeviceName - 設備名稱",
+        "RecordNum":"RecordNum - 回傳的資料數量",
+        "Records":"Records - 資料陣列內容",
+        "StartTime":"StartTime - 起始時間, yyyy-MM-dd HH:mm:ss",
+        "EndTime":"EndTime - 結束時間, yyyy-MM-dd HH:mm:ss",
+        "Type":"Type - 參考Type",
+        "CreateTime":"CreateTime - 該回傳資料建立時間",
+        "DataTime":"DataTime - 數據時間",
+        "ID":"ID - 設備ID",
+        "Address":"Address - 安裝地址",
+        "Token":"Token - 回傳的Token"
     },
 
     "RequestToken":{
@@ -23,6 +36,10 @@
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: B0:41:1D:04:34:5C \nstartTime: 2019-01-01 10:03:02 \nendTime: 2019-12-12 17:23:06" 
     },
 
+    "WHistoryData":{
+        "Data":"Data - 數據內容 ,列如:[value1,time1]@[value2,time2]@...@[valueN,timeN] , @為分隔 \nvalue: 重量值 \ntime: 距離UTC(1970.01.01)的毫秒數"
+    },
+
     "SleepRecord":{
         "desc-content":"(POST) \n通過設備名稱查詢某個設備特定時段的睡眠質量記錄訊息",
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: 20:59:A0:B0:A9:93 \nstartTime: 2016-01-01 10:03:02 \nendTime: 2016-12-12 17:23:06" 
@@ -31,6 +48,11 @@
     "ProductList":{
         "desc-content":"(POST) \n查詢指定要求的設備訊息",
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \nfilter: [all(全部設備)],[normal(正常設備)], [exception(異常設備)]" 
+    },
+
+    "ProductListData":{
+        "DeviceStatus":"DeviceStatus - 設備狀態, 參考DeviceStatus",
+        "HeartStatus":"HeartStatus - 當前計算結果"
     },
 
     "HelloWorld":{
@@ -43,14 +65,26 @@
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: 20:59:A0:B0:A9:93 \nstartTime: 2016-01-01 10:03:02 \nendTime: 2019-12-12 17:23:06" 
     },
 
+    "HBHistoryData":{
+        "Data":"Data - 數據內容 ,列如:[value1,time1]@[value2,time2]@...@[valueN,timeN] , @為分隔 \nvalue: \n-10000代表大動作\n-5000代表小動作\n-3000測不出來 \ntime: 距離UTC(1970.01.01)的毫秒數"
+    },
+
     "BRHistory":{
         "desc-content":"(POST) \n通過設備名稱查詢某個設備特定時段的歷史呼吸律",
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: 20:59:A0:B0:A9:93 \nstartTime: 2016-01-01 10:03:02 \nendTime: 2019-12-12 17:23:06" 
     },
 
+    "BRHistoryData":{
+        "Data":"Data - 數據內容 ,列如:[value1,time1]@[value2,time2]@...@[valueN,timeN] , @為分隔 \nvalue: 呼吸直 \ntime: 距離UTC(1970.01.01)的毫秒數"
+    },
+
     "BreathArray":{
         "desc-content":"(POST) \n通過設備名稱查詢某個設備最近一次的實際呼吸波信息",
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: B0:41:1D:04:34:5C" 
+    },
+
+    "BreathArrayData":{
+        "Data":"Data - 數據內容, 用@分隔，例如100@11@1@"
     },
 
     "BedRecord":{
@@ -63,9 +97,17 @@
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: B0:41:1D:04:34:5C" 
     },
 
+    "BCGData":{
+        "Data":"Data - 數據內容, 用@分隔，例如100@11@1@"
+    },
+
     "AlarmList":{
         "desc-content":"(POST) \n通過設備名稱查詢某個設備特定時段的警報",
         "example-content":"appId: syVEQA \ntoken: ab93b852091b7c7afe1908a570ea2d9c \ndevicename: 20:59:A0:B0:A9:93 \nstartTime: 2017-01-06 10:03:02 \nendTime: 2019-12-11 17:23:06" 
+    },
+
+    "AlarmReturn":{
+        "AlarmTime":"AlarmTime - 報警時間"
     },
 
     "DeviceStatus":{

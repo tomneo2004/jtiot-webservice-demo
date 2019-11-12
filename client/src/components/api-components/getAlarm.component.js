@@ -104,9 +104,20 @@ const GetAlarm = ({t})=>{
                 <div>{t('ResponseCode:303')}</div>
                 <div>{t('ResponseCode:401')}</div>
             </div>
+            <hr />
+            <div>
+                <div>{t('common:DataReturn-desc')}</div>
+                <div>{t('ResponseCode')}</div>
+                <div>{t('RecordNum')}</div>
+                <div>{t('Records')}</div>
+                <div>{t('DeviceName')}</div>
+                <div>{t('AlarmReturn:AlarmTime')}</div>
+                <div>{t('Type')}</div>
+                <div>{t('CreateTime')}</div>
+            </div>
         </div>
     );
 }
 
 export default withTranslation(['common', 'AlarmList',
-'AlarmType', 'ResponseCode'])(GetAlarm);
+'AlarmType', 'ResponseCode', 'AlarmReturn'])(GetAlarm);

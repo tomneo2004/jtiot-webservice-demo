@@ -75,9 +75,17 @@ const GetBCGArray = ({t})=>{
                 <div>{t('ResponseCode:303')}</div>
                 <div>{t('ResponseCode:401')}</div>
             </div>
+            <hr />
+            <div>
+                <div>{t('common:DataReturn-desc')}</div>
+                <div>{t('ResponseCode')}</div>
+                <div>{t('BCGData:Data')}</div>
+                <div>{t('DataTime')}</div>
+                <div>{t('CreateTime')}</div>
+            </div>
         </div>
     );
 }
 
 export default withTranslation(['common', 'BCGArray', 
-'ResponseCode'])(GetBCGArray);
+'ResponseCode', 'BCGData'])(GetBCGArray);

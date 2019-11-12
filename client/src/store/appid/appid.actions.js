@@ -12,7 +12,7 @@ export const requestToken = (appid)=>{
             });
             
             let rawData = res.data;
-            let token = rawData.data.token;
+            let token = rawData.data.Token;
     
             dispatch({type:actionType.REQUEST_TOKEN_SUCCESS, payload:{appid, token, rawData}});
         }

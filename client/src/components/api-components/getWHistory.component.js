@@ -92,9 +92,17 @@ const GetWHistory = ({t})=>{
                 <div>{t('ResponseCode:401')}</div>
                 <div>{t('ResponseCode:402')}</div>
             </div>
+            <hr />
+            <div>
+                <div>{t('common:DataReturn-desc')}</div>
+                <div>{t('ResponseCode')}</div>
+                <div style={{'white-space': 'pre-line'}}
+                >{t('WHistoryData:Data')}</div>
+                <div>{t('CreateTime')}</div>
+            </div>
         </div>
     );
 }
 
 export default withTranslation(['common', 'WHistory', 
-'ResponseCode'])(GetWHistory);
+'ResponseCode', 'WHistoryData'])(GetWHistory);

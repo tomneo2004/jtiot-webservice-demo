@@ -97,6 +97,17 @@ const GetBedRecord = ({t})=>{
                 <div>{t('ResponseCode:303')}</div>
                 <div>{t('ResponseCode:401')}</div>
             </div>
+            <hr />
+            <div>
+                <div>{t('common:DataReturn-desc')}</div>
+                <div>{t('ResponseCode')}</div>
+                <div>{t('RecordNum')}</div>
+                <div>{t('Records')}</div>
+                <div>{t('StartTime')}</div>
+                <div>{t('EndTime')}</div>
+                <div>{t('Type')}</div>
+                <div>{t('CreateTime')}</div>
+            </div>
         </div>
     );
 }

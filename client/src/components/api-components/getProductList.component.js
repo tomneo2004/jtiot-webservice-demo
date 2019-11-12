@@ -86,9 +86,22 @@ const GetProductList = ({t})=>{
                 <div>{t('ResponseCode:401')}</div>
                 <div>{t('ResponseCode:403')}</div>
             </div>
+            <hr />
+            <div>
+                <div>{t('common:DataReturn-desc')}</div>
+                <div>{t('ResponseCode')}</div>
+                <div>{t('RecordNum')}</div>
+                <div>{t('Records')}</div>
+                <div>{t('ID')}</div>
+                <div>{t('DeviceName')}</div>
+                <div>{t('Address')}</div>
+                <div>{t('ProductListData:DeviceStatus')}</div>
+                <div>{t('ProductListData:HeartStatus')}</div>
+                <div>{t('CreateTime')}</div>
+            </div>
         </div>
     );
 }
 
 export default withTranslation(['common', 'ProductList',
- 'DeviceStatus', 'ResponseCode'])(GetProductList);
+ 'DeviceStatus', 'ResponseCode', 'ProductListData'])(GetProductList);

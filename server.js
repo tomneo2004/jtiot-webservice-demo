@@ -524,7 +524,7 @@ app.post('/requestTokenMethod', (req, res)=>{
         retToken = tokenModel[appid];  
     }
 
-    res.success({data:{token:retToken}});
+    res.success({data:{Token:retToken}});
 })
 
 /**

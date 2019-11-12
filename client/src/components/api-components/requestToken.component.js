@@ -44,6 +44,11 @@ const RequestToken = ({t})=>{
             {
                 rawData? <JsonViewer src={rawData} />:null
             }
+            <hr />
+            <div>
+                <div>{t('common:DataReturn-desc')}</div>
+                <div>{t('Token')}</div>
+            </div>
         </div>
     );
 }

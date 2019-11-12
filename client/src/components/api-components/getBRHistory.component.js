@@ -91,9 +91,17 @@ const GetBRHistory = ({t})=>{
                 <div>{t('ResponseCode:401')}</div>
                 <div>{t('ResponseCode:402')}</div>
             </div>
+            <hr />
+            <div>
+                <div>{t('common:DataReturn-desc')}</div>
+                <div>{t('ResponseCode')}</div>
+                <div style={{'white-space': 'pre-line'}}
+                >{t('BRHistoryData:Data')}</div>
+                <div>{t('CreateTime')}</div>
+            </div>
         </div>
     );
 }
 
 export default withTranslation(['common', 'BRHistory', 
-'ResponseCode'])(GetBRHistory);
+'ResponseCode', 'BRHistoryData'])(GetBRHistory);
